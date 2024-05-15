@@ -1,0 +1,54 @@
+body {
+	background: url(../../images/fundo.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.site-login {
+    /*font: 16px/2em Lato, serif;*/
+    font-size: 16px;
+    line-height: 2em;
+	margin: 100px auto 20px;
+	max-width: 400px;
+}
+
+form[role=login] {
+	color: #5d5d5d;
+	background: #f2f2f2;
+	padding: 26px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+form[role=login] img {
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 35px;
+}
+
+form[role=login] input,
+form[role=login] button {
+	font-size: 18px;
+	margin: 16px 0;
+}
+
+form[role=login] > div {
+	text-align: center;
+}
+
+.form-links {
+	text-align: center;
+	margin-top: 1em;
+	margin-bottom: 50px;
+}
+
+.form-links a,
+.form-links a:hover,
+.form-links a:active,
+.form-links a:focus {
+	color: #fff;
+	text-decoration: none;
+}

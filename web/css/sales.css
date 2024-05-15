@@ -1,0 +1,12 @@
+tfoot {
+  text-align: right;
+}
+
+tfoot .footer-report {
+  font-weight: bold;
+}
+
+tfoot .footer-report .footer-report-value {
+  float: right;
+  width: 100%;
+}

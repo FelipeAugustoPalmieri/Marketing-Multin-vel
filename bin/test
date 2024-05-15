@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+
+echo "👾 Rodando migrations do RBAC..."
+php tests/codeception/bin/yii migrate --migrationPath=@yii/rbac/migrations/ --interactive=0 > /dev/null 2>&1 || echo "🚫 Ocorreu um erro ao rodar as migrations. Rode manualmente para ver o problema."
+
+echo "👾 Preparando Codeception..."
+./vendor/bin/codecept build --config=tests/codeception.yml > /dev/null 2>&1 || "🚫 Não foi possível fazer o build do Codeception."
+
+if [ $# -ge 1 ]
+then
+  echo "👾 Rodando migrations..."
+  php tests/codeception/bin/yii migrate --interactive=0 > /dev/null 2>&1 || echo "🚫 Ocorreu um erro ao rodar as migrations. Rode manualmente para ver o problema."
+
+  echo "👾 Rodando teste..."
+  # Remove o começo do diretórios ("tests/") para que funcione o comando:
+  ./vendor/bin/codecept run --config=tests/codeception.yml $(echo $1 | sed 's/tests\///g')
+  #Para debugar testes unitários, descomentar a linha abaixo
+  #./vendor/bin/codecept run --debug --config=tests/codeception.yml $(echo $1 | sed 's/tests\///g')
+  EXIT_CODE=$?
+
+else
+  echo "👾 Rodando suíte de testes..."
+  ./vendor/bin/codecept run --config=tests/codeception.yml --coverage --coverage-html
+  EXIT_CODE=$?
+
+  echo "👾 Analisando qualidade de código..."
+  ./vendor/bin/php-hound --ignore=config,runtime,tests,vendor,views,web,requirements.php .
+
+  echo "👾 Abrindo relatório de cobertura de código..."
+  open tests/codeception/_output/coverage/index.html
+fi
+
+echo "👾 Feito!"
+exit $EXIT_CODE

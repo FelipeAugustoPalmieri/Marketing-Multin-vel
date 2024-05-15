@@ -1,0 +1,131 @@
+/* Links */
+a {
+  color: #b70a06;
+}
+
+a:focus,
+a:hover {
+  color: #930000;
+}
+
+/* Bg */
+.bg-primary {
+    color: #fff !important;
+    background-color: #f58634 !important;
+}
+
+/* Link Buttons */
+.btn-link {
+    color: #b70a06;
+}
+
+.btn-link:focus,
+.btn-link:hover {
+    color: #930000;
+}
+
+/* Primary Buttons */
+.btn-primary {
+  color: #fff;
+  background-color: #f58634;
+  border-color: #f58634;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #da7123;
+  border-color: #ce681c;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: #da7123;
+  border-color: #ce681c;
+}
+
+.btn-primary:active,
+.btn-primary.active,
+.open > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #da7123;
+  border-color: #ce681c;
+}
+
+.btn-primary:active:hover,
+.btn-primary:active:focus,
+.btn-primary:active.focus,
+.btn-primary.active:hover,
+.btn-primary.active:focus,
+.btn-primary.active.focus,
+.open > .btn-primary.dropdown-toggle:hover,
+.open > .btn-primary.dropdown-toggle:focus,
+.open > .btn-primary.dropdown-toggle.focus {
+  color: #fff;
+  background-color: #b45713;
+  border-color: #ac5413;
+}
+
+.btn-primary.disabled:focus,
+.btn-primary.disabled.focus,
+.btn-primary:disabled:focus,
+.btn-primary:disabled.focus {
+  background-color: #f58634;
+  border-color: #f58634;
+}
+
+.btn-primary.disabled:hover,
+.btn-primary:disabled:hover {
+  background-color: #f58634;
+  border-color: #f58634;
+}
+
+/* Fields */
+.form-control:focus {
+  border-color: #f9b17c;
+}
+
+/* Pagination */
+.page-item.active .page-link,
+.page-item.active .page-link:focus,
+.page-item.active .page-link:hover {
+  color: #fff;
+  background-color: #f58634;
+  border-color: #f58634;
+}
+
+.page-item.disabled .page-link,
+.page-item.disabled .page-link:focus,
+.page-item.disabled .page-link:hover {
+  color: #818a91;
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.page-link {
+  color: #b70a06;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+/* Select 2 */
+.select2-container--bootstrap.select2-container--focus .select2-selection,
+.select2-container--bootstrap.select2-container--open .select2-selection {
+    border-color: #f9b17c;
+}
+
+/* Nav Pills */
+.nav-pills .nav-link.active,
+.nav-pills .nav-link.active:focus,
+.nav-pills .nav-link.active:hover,
+.nav-pills .nav-item.open .nav-link,
+.nav-pills .nav-item.open .nav-link:focus,
+.nav-pills .nav-item.open .nav-link:hover {
+    background-color: #F7C199;
+    color: #b70a06;
+}
+
+.dropzone{
+    border-radius: 15px;
+    height: 200px;
+}

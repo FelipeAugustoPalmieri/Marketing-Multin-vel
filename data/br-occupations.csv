@@ -1,0 +1,318 @@
+"Name";"ID"
+"Outro";0
+"Administrador";1
+"Administrador de edifício";2
+"Administrador de exploração agrícola";3
+"Administradores";4
+"Advogado";5
+"Advogado direito do trabalho";6
+"Agenciador de propaganda";7
+"Agente administrativo";8
+"Agente de compras";9
+"Agente de venda de serviços as empresas";10
+"Agente de viagem";11
+"Agente publicitário";12
+"Agente técnico de vendas";13
+"Agentes administrativos";14
+"Agentes de administração de empresas publicas e privadas";15
+"Almoxarife";16
+"Analista de cargos e salários";17
+"Analista de comercialização";18
+"Analista de comunicação";19
+"Analista de importação e exportação";20
+"Analista de ocupação";21
+"Analista de organização e métodos";22
+"Analista de pesquisa de mercado";23
+"Analista de recursos humanos";24
+"Analista de seguros";25
+"Analista de sistemas";26
+"Analista de suporte de sistema";27
+"Apontador de mão de obra";28
+"Apontador de produção";29
+"Arquiteto";30
+"Arquivista";31
+"Assistente administrativo";32
+"Assistente de patrimônio";33
+"Assistente de vendas financeiro";34
+"Assistente social";35
+"Atendente de enfermagem";36
+"Atleta profissional de futebol";37
+"Auditor contábil";38
+"Auditor geral";39
+"Auxiliar de almoxarifado";40
+"Auxiliar de biblioteca";41
+"Auxiliar de contabilidade";42
+"Auxiliar de enfermagem";43
+"Auxiliar de escritório";44
+"Auxiliar de farmácia";45
+"Auxiliar de importação e exportação";46
+"Auxiliar de laboratório de analises clinicas";47
+"Auxiliar de laboratório de analises físico-químicas";48
+"Auxiliar de pessoal";49
+"Auxiliar de seguros";50
+"Auxiliar de serviços jurídicos";51
+"Auxiliares de contabilidade";52
+"Auxiliares de escritório";53
+"Babá";54
+"Barman";55
+"Bibliotecário";56
+"Biologista";57
+"Bioquímico";58
+"Cabeleireiro";59
+"Carteiro";60
+"Chefe de administrativos";61
+"Chefe de almoxarifado";62
+"Chefe de contabilidade";63
+"Chefe de contabilidade e finanças";64
+"Chefe de contas a pagar";65
+"Chefe de controle de patrimônio";66
+"Chefe de escritório";67
+"Chefe de escritório contabilidade";68
+"Chefe de escritório credito e cobrança";69
+"Chefe de escritório orçamento";70
+"Chefe de escritório pessoal";71
+"Chefe de escritório serviços gerais";72
+"Chefe de escritório tesouraria";73
+"Chefe de recepção hotel";74
+"Chefe de serviço de transporte rodoviário";75
+"Chefe de serviços de telecomunicações";76
+"Cirurgião";77
+"Cirurgião dentista";78
+"Codificador de dados";79
+"Comerciante varejista";80
+"Comissário de bordo aeronaves";81
+"Comprador comércio atacadista e varejista";82
+"Condutor de caminhão basculante";83
+"Condutores de automóveis";84
+"Consultor jurídico";85
+"Contador";86
+"Contramestre de embarcação";87
+"Contramestre industria têxtil";88
+"Coordenador de ensino";89
+"Correspondente comercial";90
+"Cozinheiro chefe";91
+"Cronoanalista";92
+"Datilografo";93
+"Demonstrador";94
+"Desenhista";95
+"Desenhista projetista";96
+"Desenhista técnico";97
+"Despachante";98
+"Diagramador";99
+"Digitador";100
+"Diretor de empresa";101
+"Diretor de empresa de comércio varejista";102
+"Diretor de empresa de comunicações";103
+"Diretor de empresa de construção civil";104
+"Diretor de empresa de prestação de serviços";105
+"Diretor de empresa de serviços clínicos e hospitalares";106
+"Diretor de empresa financeira";107
+"Diretor de empresa manufatureira";108
+"Diretor de estabelecimento de ensino";109
+"Diretor de estabelecimento de ensino superior";110
+"Diretores de empresas";111
+"Economista";112
+"Economista mercadologia";113
+"Economista programação econômico-financeira";114
+"Economistas";115
+"Editor de livros";116
+"Encarregado de digitação e operação";117
+"Enfermeiro";118
+"Enfermeiro do trabalho";119
+"Enfermeiros";120
+"Engenheiro aeronáutico";121
+"Engenheiro agrônomo";122
+"Engenheiro civil";123
+"Engenheiro de controle de qualidade";124
+"Engenheiro de manutenção eletricidade e eletrônica";125
+"Engenheiro de minas";126
+"Engenheiro de organização e métodos";127
+"Engenheiro de segurança do trabalho";128
+"Engenheiro de telecomunicações";129
+"Engenheiro de trafego";130
+"Engenheiro eletricista";131
+"Engenheiro eletrônico";132
+"Engenheiro mecânico";133
+"Engenheiro químico";134
+"Engenheiros";135
+"Escriturário";136
+"Escrivão";137
+"Estatístico";138
+"Esteticista";139
+"Farmacêutico";140
+"Fisioterapeuta";141
+"Fonoaudiólogo";142
+"Funcionário publico estadual superior";143
+"Funcionário publico federal superior";144
+"Funcionário publico municipal superior";145
+"Funcionário publico superior";146
+"Geólogo";147
+"Gerente administrativo";148
+"Gerente comercial";149
+"Gerente de banco";150
+"Gerente de bar";151
+"Gerente de compra";152
+"Gerente de  empresas";153
+"Gerente de hotel";154
+"Gerente de informática";155
+"Gerente de loja";156
+"Gerente de marketing";157
+"Gerente de operação";158
+"Gerente de pesquisa e desenvolvimento";159
+"Gerente de pessoal";160
+"Gerente de planejamento";161
+"Gerente de postal e telecomunicações";162
+"Gerente de produção";163
+"Gerente de propaganda";164
+"Gerente de restaurante";165
+"Gerente de RH";166
+"Gerente de transporte";167
+"Gerente de vendas";168
+"Gerente executivo";169
+"Gerente financeiro";170
+"Gerente operacional";171
+"Inspetor de produção";172
+"Inspetor de qualidade";173
+"Inspetor de serviços de transporte";174
+"Inspetor técnico de vendas";175
+"Instrutor de aprendizagem e treinamento";176
+"Jornalista";177
+"Laboratorista analises clinicas";178
+"Laboratorista industrial";179
+"Locutor";180
+"Maitre";181
+"Médico";182
+"Médico anestesista";183
+"Médico cardiologista";184
+"Médico do trabalho";185
+"Médico ginecologista";186
+"Médico ortopedista";187
+"Médico pediatra";188
+"Médico psiquiatra";189
+"Médico veterinário";190
+"Mestre construção civil";191
+"Mestre industrial";192
+"Motociclista transporte de mercadorias";193
+"Motorista";194
+"Motorista de caminhão";195
+"Motorista de furgão ou veiculo similar";196
+"Motorista de ônibus";197
+"Motorista de taxi";198
+"Músico";199
+"Nutricionista";200
+"Operador de câmera de televisão";201
+"Operador de computador";202
+"Operador de equipamentos de entrada de dados";203
+"Operador de estação de radio";204
+"Operador de maquinas e veículos";205
+"Operador de micro";206
+"Operador de produtos financeiros";207
+"Operador de raios x";208
+"Operador de telemarketing";209
+"Orientador educacional";210
+"Ourives";211
+"Pedagogo";212
+"Piloto";213
+"Pintor";214
+"Produtor de radio e televisão";215
+"Professor de 1a a 4a serie ensino de 1o grau";216
+"Professor de administração ensino superior";217
+"Professor de alunos com deficiências mentais";218
+"Professor de biologia ensino de 2o grau";219
+"Professor de ciências naturais ensino de 1o grau";220
+"Professor de comunicação";221
+"Professor de contabilidade ensino superior";222
+"Professor de didática ensino superior";223
+"Professor de direito";224
+"Professor de economia";225
+"Professor de educação física";226
+"Professor de enfermagem";227
+"Professor de ensino pre escolar";228
+"Professor de estatística";229
+"Professor de estudos sociais ensino de 1o grau";230
+"Professor de física";231
+"Professor de fisioterapia ensino superior";232
+"Professor de historia";233
+"Professor de inglês";234
+"Professor de língua portuguesa";235
+"Professor de línguas estrangeiras";236
+"Professor de matemática";237
+"Professor de orientação educacional ensino superior";238
+"Professor de pedagogia";239
+"Professor de português e literatura";240
+"Professor de pratica de ensino ensino superior";241
+"Professor de psicologia";242
+"Professor de química";243
+"Professor de sociologia";244
+"Professor de tecnologia";245
+"Professores";246
+"Professores de biologia";247
+"Professores de ciências humanas";248
+"Professores de ensino de 2o grau";249
+"Professores de ensino de primeiro grau";250
+"Professores de ensino especial";251
+"Professores de ensino pre escolar";252
+"Professores de ensino superior";253
+"Professores de pedagogia";254
+"Professor de geografia";255
+"Programador de computador";256
+"Propagandista de produtos de laboratório";257
+"Psicólogo";258
+"Químico";259
+"Químico analista";260
+"Químico industrial";261
+"Recepcionista";262
+"Redator";263
+"Relações publicas";264
+"Repórter";265
+"Representante comercial";266
+"Secretário";267
+"Secretário bilingue";268
+"Secretário executivo";269
+"Serventuários da justiça";270
+"Sociólogo";271
+"Supervisor de compras";272
+"Supervisor de vendas comércio atacadista";273
+"Supervisor de vendas comércio varejista";274
+"Supervisor educacional";275
+"Supervisores de compras e compradores";276
+"Supervisores de vendas";277
+"Técnico";278
+"Técnico agrícola";279
+"Técnico agropecuário";280
+"Técnico de administração";281
+"Técnico de contabilidade";282
+"Técnico de enfermagem";283
+"Técnico de laboratório";284
+"Técnico de manutenção elétrica";285
+"Técnico de manutenção eletrônica";286
+"Técnico de obras civis";287
+"Técnico de planejamento de produção";288
+"Técnico de segurança do trabalho";289
+"Técnico de seguros";290
+"Técnico de telecomunicações";291
+"Técnico eletrônico";292
+"Técnico mecânico";293
+"Técnico mecânico maquinas";294
+"Técnico metalúrgico";295
+"Técnico químico";296
+"Técnicos de biologia";297
+"Técnicos de eletricidade";298
+"Técnicos de enfermagem";299
+"Técnicos de obras civis";300
+"Terapeuta ocupacional";301
+"Topógrafo";302
+"Trabalhadores das profissões cientificas";303
+"Trabalhadores de comércio";304
+"Trabalhadores de serviços administrativos";305
+"Trabalhadores de serviços de contabilidade";306
+"Trabalhadores de serviços de turismo";307
+"Vendedor a domicilio";308
+"Vendedor ambulante";309
+"Vendedor de comércio atacadista";310
+"Vendedor de comércio varejista";311
+"Vendedor pracista";312
+"Vendedores de comércio atacadista e varejista";313
+"Vendedores pracistas";314
+"Vereador";315
+"Zootecnista";316

@@ -1,0 +1,384 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555555;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+}
+
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap > .container {
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.footer {
+    height: 60px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.not-set {
+    color: #ccc;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view th {
+    white-space: nowrap;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+.data-separator {
+    margin: 0.5em 0;
+    padding: 0.5 0;
+}
+
+.data-separator legend {
+    border-bottom: 1px solid #ccc;
+    margin: 0.5em 0 1em 0;
+    padding: 0.5em 0 0.3em 0;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.perspectiva-link {
+    vertical-align: middle;
+}
+
+#data-view {
+    margin-top: 2em;
+}
+
+#data-view .detail-view th {
+    width: 70%;
+}
+
+#data-view .detail-view th:first-child {
+    width: 30%;
+}
+
+#data-view .tab-content {
+    margin-top: 1em;
+}
+
+.select2-container--bootstrap .select2-selection--single {
+    height: 38px;
+}
+
+/* Sidebar */
+@media (max-width: 767px) {
+    .navbar {
+        padding: 0 0 1em;
+    }
+}
+
+.navbar button:focus {
+    outline:0;
+}
+
+.navbar-header {
+    overflow: hidden;
+}
+
+.outer-container {
+    max-width: 1300px; /* .container + 25% */
+}
+
+.navbar ul + .sidebar-title {
+    margin-top: 20px;
+}
+
+.navbar .sidebar-title {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 5px;
+    font-size: 85%;
+    font-weight: normal;
+    letter-spacing: 1px;
+    color: #aeaeae;
+    text-transform: uppercase;
+}
+
+.navbar-brand {
+    float: none;
+    padding-left: 0.5em;
+}
+
+.navbar-brand > img {
+    display: inline;
+    max-width: 100px;
+}
+
+.modal-gigante{
+    width: 1185px;
+}
+.alert-padding-menor .alert{
+    padding: 13px;
+}
+.alturapadraoboxpontos{
+    height: 125px !important;
+}
+.m-top-30{
+    margin-top: 30px;
+}
+.alert-success a i{
+    color: #3c763d;
+}
+.alert-backgraound{
+    border-color: #b70a06;
+    background-color: #f8f8f8;
+    color: #b70a06;
+}
+.alert-success.alert-backgraound{
+    border-color: #3c763d;
+    color: #3c763d;
+}
+.alert-warning.alert-backgraound{
+    border-color: #8a6d3b;
+    color: #8a6d3b;
+}
+.alert-warning a i{
+    color: #8a6d3b;
+}
+.progress-bar-danger, .progress-bar-warning, .progress-bar-success{
+    background: none;
+}
+.progress-bar-danger .progress-bar{
+    background-color: #b70a06;
+}
+
+.progress-bar-warning .progress-bar{
+    background-color: #f0ad4e;
+}
+
+.progress-bar-success .progress-bar{
+    background-color: #3c763d;
+}
+.button-red{
+    background-color: #b70a06;
+    color: #fff;
+}
+
+.geroucomsucesso-view{
+    display: flex;
+    justify-content: center;
+}
+.geroucomsucesso-view h1{
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    margin-top: 150px;
+}
+.linkmenu:hover, .linkmenu:focus{
+    text-decoration:none;
+}
+
+.linkmenu .badge{
+    float: right;
+    margin-top: 5px;
+}
+.panel .sidebar-title{
+    font-weight: 900;
+    color: #d84600;
+    padding-left: 0px;
+}
+#accordion{
+    margin-top: 15px;
+}
+.navbar{
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-left: 0px solid;
+}
+.remove-padding-left{
+    padding-left: 0px;
+}
+.remove-padding-right{
+    padding-right: 0px;
+}
+.remove-margin-bottom{
+    margin-bottom:0px;
+}
+.datanav{
+    padding-left: 20px;
+    padding-top: 15px;
+}
+.margintop18{
+    margin-top: 18px;
+}
+
+.navbar-right{
+    padding-right: 8px;
+}
+.navbarnovo{
+    height: 100%;
+}
+
+.consumer-index .text-nowrap{
+    vertical-align: inherit !important;
+}
+
+.consumer-index .text-nowrap a{
+    padding: 10px;
+    background: #da7123;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.consumer-index .table tbody tr {
+    height: 57px;
+}
+.consumer-index .grid-view nav{
+    text-align: center;
+}
+
+.habilitar-consumer{
+    padding: 10px;
+    background: #da7123;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+.float-left{
+    float: left;
+}
+
+.text-left{
+    text-align: left;
+}
+
+.btn-cancel{
+    margin-left: 20px;
+}
+
+@media (max-width: 990px) {
+    .remove-padding-left {
+        padding-left: 15px;
+    }
+
+    .removemobilepad{
+        padding-left: 0px;
+    }
+
+    .removemobilepad .navbar{
+        padding: 0px 25px 10px 25px;
+    }
+}
+
+.opcoes-planos {
+    height: 160px;
+    vertical-align: middle;
+    display: table-cell;
+    min-width: 360px;
+}
+
+.opcoes-planos p {
+    margin: 0 0 2px !important;
+    font-weight: 900;
+}
+.exportasaas-consumer{
+    margin-right: 4px;
+}
+.exportasaas{
+    margin-right: 4px;
+}
+
+.disabled {
+    text-decoration: none;
+    color: gray !important;
+    cursor: default !important;
+    opacity: 0.6;
+  }
+
+.icon-asaas{
+    background-image: url(/images/icon-asaas.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 5.5px;
+    margin-left: 4px;
+}

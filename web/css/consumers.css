@@ -1,0 +1,51 @@
+.parent-selector {
+    background: url("../images/tree-separator.gif") no-repeat bottom center;
+    margin-bottom: 1rem;
+}
+
+.parent-selector .parent,
+.parent-selector .children {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.parent-selector .children {
+    padding-top: 40px;
+}
+
+.parent-selector .left-child {
+    margin-right: 20px;
+}
+
+.parent-selector .right-child {
+    margin-left: 20px;
+}
+
+.parent-selector .parent,
+.parent-selector .left-child,
+.parent-selector .right-child {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 100%;
+    width: 300px;
+}
+
+.parent-selector .left-child,
+.parent-selector .right-child {
+    display: inline-block;
+}
+
+tfoot {
+  text-align: right;
+}
+
+tfoot .footer-report {
+  font-weight: bold;
+}
+
+tfoot .footer-report .footer-report-value {
+  float: right;
+  width: 100%;
+}

@@ -1,0 +1,41 @@
+{
+    "require": {
+        "php": ">=5.5.0",
+        "yiisoft/yii2": ">=2.0.5",
+        "bower-asset/tether": "1.2.*",
+        "bower-asset/bootstrap": "3.4.*",
+        "yiisoft/yii2-bootstrap": "2.0.*",
+        "yiisoft/yii2-swiftmailer": "*",
+        "vlucas/phpdotenv": "2.*",
+        "yiibr/yii2-br-validator": "^1.0",
+        "rmrevin/yii2-fontawesome": "~2.17",
+        "kartik-v/yii2-widget-select2": "^2.0",
+        "hashids/hashids": "^1.0",
+        "bower-asset/roboto-fontface": "^0.4.5",
+        "bower-asset/jquery": "2.*",
+        "kartik-v/yii2-money": "*",
+        "ext-pdo_pgsql": "*",
+        "miloschuman/yii2-highcharts-widget": "^5.0",
+        "kartik-v/yii2-mpdf": "^1.0",
+        "alexandernst/yii2-device-detect": "^0.0.12",
+        "tcdent/php-restclient": "^0.1.7"
+    },
+    "require-dev": {
+        "yiisoft/yii2-codeception": "*",
+        "yiisoft/yii2-debug": "*",
+        "yiisoft/yii2-gii": "*",
+        "yiisoft/yii2-faker": "*",
+        "codeception/codeception": "2.*",
+        "codeception/specify": "*",
+        "codeception/verify": "*",
+        "alanwillms/php-hound": "^0.7.1",
+        "codeception/c3": "*",
+        "fzaninotto/faker": "^1.5"
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}
