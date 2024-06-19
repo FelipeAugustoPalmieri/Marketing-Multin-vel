@@ -19,6 +19,8 @@ use yii\behaviors\TimestampBehavior;
  * @property string $authenticable_type
  * @property integer $authenticable_id
  * @property string $reset_password_token
+ *
+ * @method static User|null findOne($condition)
  */
 class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
@@ -161,7 +163,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     }
 
     /**
-     * @return bolean
+     * @return boolean
      **/
     public function isActive()
     {

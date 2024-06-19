@@ -2,13 +2,16 @@
 
 namespace app\models;
 
+use Yii;
 use app\models\TransactionDetail;
 use app\models\ConsumerUserForm;
 use app\models\query\ConsumerQuery;
 use Hashids\Hashids;
-use Yii;
 use yii\behaviors\TimestampBehavior;
 use app\util\clsTexto;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "consumers".
@@ -37,7 +40,7 @@ use app\util\clsTexto;
  * @property LegalPerson $legalPerson
  * @property PlanoInvestimento $planoinvestimento
  */
-class Consumer extends \yii\db\ActiveRecord
+class Consumer extends ActiveRecord
 {
 
     const EVENT_SET_REPRESENTATIVE_PERMISSION = 'set-representative-permission';
@@ -595,90 +598,111 @@ class Consumer extends \yii\db\ActiveRecord
     public function activate()
     {
         $transaction = Yii::$app->db->beginTransaction();
-        $userVerificar = User::findOne(['login' => $this->identifier]);
-        if(!$userVerificar){
-            $user = new ConsumerUserForm;
-            $user->scenario = 'insert';
-            $user->consumer = $this;
-            $user->authManager = Yii::$app->authManager;
-            $user->name = $this->legalPerson->name;
-            $user->email = $this->legalPerson->email;
-            $user->identifier = (int) $this->identifier;
-            $hashids = new Hashids(
-                $chaveSecreta = 'consumer_random_password',
-                $minimoDeCaracteres = 6,
-                $alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
-            );
+        try {
+            $userVerificar = User::findOne(['login' => $this->identifier]);
+            if (!$userVerificar) {
+                $user = new ConsumerUserForm;
+                $user->scenario = 'insert';
+                $user->consumer = $this;
+                $user->authManager = Yii::$app->authManager;
+                $user->name = $this->legalPerson->name;
+                $user->email = $this->legalPerson->email;
+                $user->identifier = (int) $this->identifier;
+                $hashids = new Hashids(
+                    $chaveSecreta = 'consumer_random_password',
+                    $minimoDeCaracteres = 6,
+                    $alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+                );
 
-            $password = $hashids->encode(rand(0, 10000));
-
-            $user->password = $password;
-            $user->passwordConfirmation = $password;
-            $userSalved = $user->save();
-        }else{
-            $userSalved = true;
-        }
-        
-        $numeroParcelas = 1;
-        if($this->maximum_amount > 1){
-            $numeroParcelas = $this->maximum_amount;
-            $profitValue = $this->calculatePaidBillet();
-            $profitRepresentative = $this->calculatePaidBilletRepresentative();
-        }else{
-            $profitValue = $this->plane->calculateProfitValue($this->sponsorConsumer->plane);
-            $profitRepresentative = $this->calculateRepresentativeActivateProfit();
-        }
-        
-        $detailsSaved = false;
-        $comissionSaved = false;
-
-        $adiantamentoMes = ($this->maximum_amount <= 1 ? $this->maximum_amount : 0);
-        
-        for($i = 0; $i < $numeroParcelas; $i++){
-            $dia = ($i == 0? mktime(date('H'), date('i'), date('s'), date('m')+$adiantamentoMes, date('d'), date('Y')) : mktime(date('H'), date('i'), date('s'), date('m')+$i, 1, date('Y')));
-            $start = date("Y-m-d H:i:s", $dia);
-            
-            $details = new TransactionDetail;
-            $details->object_type = 'Consumer';
-            $details->object_id = $this->id;
-            $details->consumer_id = $this->sponsorConsumer->id;
-            $details->plane_id = $this->sponsorConsumer->plane->id;
-            $details->profit_percentage = $this->sponsorConsumer->plane->bonus_percentage;
-            $details->profit = $profitValue;
-            $details->transaction_origin = TransactionDetail::TRANSACTION_ORIGIN_HIM;
-            $details->created_at = $start;
-            $details->updated_at = $start;
-
-            $detailsSaved = $details->save();
-            
-            $representative = self::getRepresentativeOfCity($this->legalPerson->city);
-            
-            if ($representative) {
-                $comission  = new TransactionDetail;
-                $comission->object_type = 'Consumer';
-                $comission->object_id = $this->id;
-                $comission->consumer_id = $representative->id;
-                $comission->plane_id = $representative->plane_id;
-                $comission->profit_percentage = Configuration::getConfigurationValue(Configuration::PERCENTUAL_REPASSE_REPRESENTANTE);
-                $comission->profit = $profitRepresentative;
-                $comission->transaction_origin = TransactionDetail::REPRESENTATIVE_COMISSION;
-                $comission->created_at = $start;
-                $comission->updated_at = $start;
-
-                $comissionSaved = $comission->save();
-            }else{
-                $comissionSaved = true;
+                $password = $hashids->encode(rand(0, 10000));
+                $user->password = $password;
+                $user->passwordConfirmation = $password;
+                $userSalved = $user->save();
+            } else {
+                $userSalved = true;
             }
+
+            $numeroParcelas = 1;
+            if ($this->maximum_amount > 1) {
+                $numeroParcelas = $this->maximum_amount;
+                $profitValue = $this->calculatePaidBillet();
+                $profitRepresentative = $this->calculatePaidBilletRepresentative();
+            } else {
+                // Adicionando logs para depuração
+                Yii::info('Verificando plane e sponsorConsumer->plane', __METHOD__);
+                Yii::info('plane: ' . print_r($this->plane, true), __METHOD__);
+                Yii::info('sponsorConsumer: ' . print_r($this->sponsorConsumer, true), __METHOD__);
+                Yii::info('sponsorConsumer->plane: ' . print_r($this->sponsorConsumer->plane, true), __METHOD__);
+
+                if (!($this->plane instanceof \app\models\Plane)) {
+                    Yii::error("O objeto plane do consumidor atual não é uma instância de Plane.", __METHOD__);
+                    $transaction->rollBack();
+                    return false;
+                }
+                if (!($this->sponsorConsumer->plane instanceof \app\models\Plane)) {
+                    Yii::error("O objeto plane do consumidor patrocinador não é uma instância de Plane.", __METHOD__);
+                    $transaction->rollBack();
+                    return false;
+                }
+
+                $profitValue = $this->plane->calculateProfitValue($this->sponsorConsumer->plane);
+                $profitRepresentative = $this->calculateRepresentativeActivateProfit();
+            }
+
+            $detailsSaved = false;
+            $comissionSaved = false;
+
+            $adiantamentoMes = ($this->maximum_amount <= 1 ? $this->maximum_amount : 0);
+
+            for ($i = 0; $i < $numeroParcelas; $i++) {
+                $dia = ($i == 0 ? mktime(date('H'), date('i'), date('s'), date('m') + $adiantamentoMes, date('d'), date('Y')) : mktime(date('H'), date('i'), date('s'), date('m') + $i, 1, date('Y')));
+                $start = date("Y-m-d H:i:s", $dia);
+
+                $details = new TransactionDetail;
+                $details->object_type = 'Consumer';
+                $details->object_id = $this->id;
+                $details->consumer_id = $this->sponsorConsumer->id;
+                $details->plane_id = $this->sponsorConsumer->plane->id;
+                $details->profit_percentage = $this->sponsorConsumer->plane->bonus_percentage;
+                $details->profit = $profitValue;
+                $details->transaction_origin = TransactionDetail::TRANSACTION_ORIGIN_HIM;
+                $details->created_at = $start;
+                $details->updated_at = $start;
+
+                $detailsSaved = $details->save();
+
+                $representative = self::getRepresentativeOfCity($this->legalPerson->city);
+
+                if ($representative) {
+                    $comission = new TransactionDetail;
+                    $comission->object_type = 'Consumer';
+                    $comission->object_id = $this->id;
+                    $comission->consumer_id = $representative->id;
+                    $comission->plane_id = $representative->plane_id;
+                    $comission->profit_percentage = Configuration::getConfigurationValue(Configuration::PERCENTUAL_REPASSE_REPRESENTANTE);
+                    $comission->profit = $profitRepresentative;
+                    $comission->transaction_origin = TransactionDetail::REPRESENTATIVE_COMISSION;
+                    $comission->created_at = $start;
+                    $comission->updated_at = $start;
+
+                    $comissionSaved = $comission->save();
+                } else {
+                    $comissionSaved = true;
+                }
+            }
+
+            if ($userSalved && $comissionSaved && $detailsSaved) {
+                $transaction->commit();
+                return true;
+            }
+
+            $transaction->rollBack();
+            return false;
+        } catch (\Exception $e) {
+            Yii::error($e->getMessage(), __METHOD__);
+            $transaction->rollBack();
+            throw $e;
         }
-
-        if ($userSalved && $comissionSaved && $detailsSaved) {
-
-            $transaction->commit();
-            return true;
-        }
-
-        $transaction->rollBack();
-        return false;
     }
 
     /**
