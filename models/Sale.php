@@ -177,6 +177,8 @@ class Sale extends \yii\db\ActiveRecord
         $modelTransaction = New TransactionDetail;
         $modelTransaction = $modelTransaction->findAll(['object_id'=>$this->id, 'object_type'=>'Sale']);
 
+        $this->load('consumer');
+
         $representative = Consumer::getRepresentativeOfCity($this->getRepresentativeCity());
 
         foreach ($modelTransaction as $key => $value) {

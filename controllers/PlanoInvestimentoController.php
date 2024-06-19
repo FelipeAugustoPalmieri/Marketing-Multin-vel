@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
 use app\models\PlanoInvestimento;
 use app\models\search\PlanoInvestimentoSearch;
+use yii\web\NotFoundHttpException;
 /**
  * SalesController implements the CRUD actions for Sale model.
  */

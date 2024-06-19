@@ -15,6 +15,7 @@ use app\models\search\ContratosSearch;
 use app\models\Investimento;
 use app\models\Configuration;
 use kartik\mpdf\Pdf;
+use yii\web\NotFoundHttpException;
 /**
  * SalesController implements the CRUD actions for Sale model.
  */

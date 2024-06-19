@@ -6,7 +6,7 @@ use Yii;
 use yii\helpers\Url;
 use app\models\Sale;
 use app\models\User;
-use app\controllers\Exception;
+use yii\base\Exception;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -17,11 +17,15 @@ use app\models\Consumable;
 use app\models\SalesReport;
 use app\models\Configuration;
 use app\models\Consumer;
+use yii\db\Query;
+
+
+
 
 /**
  * SalesController implements the CRUD actions for Sale model.
  */
-class SalesController extends Controller
+class SalesController extends Controller 
 {
     public function behaviors()
     {
@@ -242,7 +246,7 @@ class SalesController extends Controller
             $out['results'] = array_values($data);
         }
         elseif ($id > 0) {
-            $out['results'] = ['id' => $id, 'text' => Consumers::find($id)->name];
+            $out['results'] = ['id' => $id, 'text' => Consumer::find($id)->name];
         }
         return $out;
     }
@@ -286,24 +290,23 @@ class SalesController extends Controller
     }
 
     private function sendProofOfPurchase(Sale $sale)
-    {
-        $user = User::find()
-            ->andWhere("authenticable_type = 'Consumer'")
-            ->andWhere("authenticable_id = " . $sale->consumer_id)
-            ->one();
+{
+    $user = User::find()
+        ->where(['authenticable_type' => 'Consumer'])
+        ->andWhere(['authenticable_id' => $sale->consumer_id])
+        ->one();
 
-        if (!$user) {
-            return false;
-        }
-
-        $mailer = \Yii::$app->mailer;
-        $mailer->htmlLayout = 'layouts/purchase';
-
-        return $mailer->compose('sale/proof-purchase', ['sale' => $sale])
-            ->setFrom(getenv('MAILER_FROM'))
-            ->setTo($user->email)
-            ->setSubject(Yii::t('app/mail', 'Proof Of Purchase'))
-            ->send()
-        ;
+    if (!$user) {
+        return false;
     }
+
+    $mailer = \Yii::$app->mailer;
+    $mailer->htmlLayout = 'layouts/purchase';
+
+    return $mailer->compose('sale/proof-purchase', ['sale' => $sale])
+        ->setFrom(getenv('MAILER_FROM'))
+        ->setTo($user->email)
+        ->setSubject(Yii::t('app/mail', 'Proof Of Purchase'))
+        ->send();
+ }
 }

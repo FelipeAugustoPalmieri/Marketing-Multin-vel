@@ -11,6 +11,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
 use app\models\search\OfferSearch;
+use yii\web\NotFoundHttpException;
 
 class OfferController extends Controller
 {

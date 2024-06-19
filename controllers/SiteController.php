@@ -12,6 +12,7 @@ use app\models\User;
 use app\models\UserPasswordChangeForm;
 use app\models\UserPasswordResetForm;
 use app\models\locasms\Envio;
+use yii\db\ActiveRecord;
 
 class SiteController extends Controller
 {

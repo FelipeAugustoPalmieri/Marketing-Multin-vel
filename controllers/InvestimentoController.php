@@ -23,6 +23,8 @@ use app\models\bling\ContaReceberBling;
 use app\models\Faturamento;
 use kartik\mpdf\Pdf;
 use app\models\InvestimentoForm;
+use yii\base\Exception;
+use yii\web\NotFoundHttpException;
 
 /**
  * SalesController implements the CRUD actions for Sale model.
@@ -93,9 +95,10 @@ class InvestimentoController extends Controller
                     $transaction->rollBack();
                     Yii::$app->session->setFlash('error', Yii::t('app', 'An unknown error occorred while activating the percentage.'));    
                 }
-            }catch(Exception $ex){
+            } catch (Exception $ex) { 
+                // Tratamento da exceção
                 $transaction->rollBack();
-                Yii::$app->session->setFlash('error', Yii::t('app', 'An unknown error occorred while activating the percentage.'));
+                Yii::$app->session->setFlash('error', Yii::t('app', 'Ocorreu um erro desconhecido ao ativar a porcentagem.'));
             }
         }
 
