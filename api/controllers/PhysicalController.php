@@ -22,32 +22,36 @@ class PhysicalController extends Controller{
 		return $this->render('index');
 	}
 
-	public function actionDocumentoConsumer($documento = ""){
-		if(strlen($documento) > 0){
-				$model = new Consumer();
-				$model = $model->find()->Where(['identifier' => $documento])->one();
-			
-				$legalPersonModel = new LegalPerson;
-
-				$dadosLegal = $legalPersonModel->find()->where(['id' => $model->legal_person_id, 'person_class' => 'PhysicalPerson'])->one();
-				$consumerSearch = $model;
-			
-				if($dadosLegal){
-						$modelCity = new City;
-						$dadosCity = $modelCity->find()->where(['id'=>$dadosLegal->city_id])->one();
-						$modelPhysical = new PhysicalPerson;
-						$dadosPhysical = $modelPhysical->find()->where(['id'=>$dadosLegal->person_id])->one();
-				}
-
-				return $dadosretorno = array(
-						'users' => User::find()->where(['login' => $documento])->one(),
-						'consumidor'=> $consumerSearch,
-						'legalperson' => $dadosLegal,
-						'physicalperson'=>$dadosPhysical,
-						'city' => $dadosCity
-				);
-		}else{
-				throw new ForbiddenHttpException("Documento obrigatório", 400);
+	public function actionDocumentoConsumer($documento = "") {
+		if (strlen($documento) > 0) {
+			$model = Consumer::findOne(['identifier' => $documento]);
+	
+			if (!$model) {
+				throw new ForbiddenHttpException("Documento não encontrado", 404);
+			}
+	
+			$legalPersonModel = LegalPerson::findOne(['id' => $model->legal_person_id, 'person_class' => 'PhysicalPerson']);
+			$consumerSearch = $model;
+			$dadosLegal = null;
+			$dadosPhysical = null;
+			$dadosCity = null;
+	
+			if ($legalPersonModel) {
+				$dadosCity = City::findOne(['id' => $legalPersonModel->city_id]);
+				$dadosPhysical = PhysicalPerson::findOne(['id' => $legalPersonModel->person_id]);
+			}
+	
+			$dadosretorno = [
+				'users' => User::findOne(['login' => $documento]),
+				'consumidor' => $consumerSearch,
+				'legalperson' => $dadosLegal,
+				'physicalperson' => $dadosPhysical,
+				'city' => $dadosCity
+			];
+	
+			return $dadosretorno;
+		} else {
+			throw new ForbiddenHttpException("Documento obrigatório", 400);
 		}
 	}
 
