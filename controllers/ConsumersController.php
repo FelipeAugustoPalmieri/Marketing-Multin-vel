@@ -377,41 +377,40 @@ class ConsumersController extends Controller
     public function actionActive($id)
     {
         $consumer = $this->findModel($id);
-
-        $consumer->identifier = ($consumer->identifier) ? $consumer->identifier : $consumer->getNextFreeIdentifier();
-
+    
         if ($consumer->paid_affiliation_fee) {
             Yii::$app->session->setFlash('error', Yii::t('app', 'Consumer has been activated before.'));
             return $this->redirect(['index']);
         }
-
-        if (Yii::$app->request->post()) {
-
+    
+        if (Yii::$app->request->isPost) {
             $transaction = Yii::$app->db->beginTransaction();
-
-            $consumer->plane_id = ($consumer->plane_id) ? $consumer->plane_id : Yii::$app->request->post('Consumer')['plane_id'];
-            $consumer->identifier = Yii::$app->request->post('Consumer')['identifier'];
-            $consumer->paid_affiliation_fee = true;
-
-            if ($consumer->validate()) {
-                if ($consumer->save() && $consumer->activate()) {
+    
+            try {
+                $consumer->plane_id = Yii::$app->request->post('Consumer')['plane_id'];
+                $consumer->identifier = Yii::$app->request->post('Consumer')['identifier'];
+                $consumer->paid_affiliation_fee = true;
+    
+                if ($consumer->validate() && $consumer->save() && $consumer->activate()) {
                     $consumer->trigger(Consumer::EVENT_SET_REPRESENTATIVE_PERMISSION);
                     $transaction->commit();
-                    Yii::$app->session->setFlash('success', Yii::t('app', 'Consumer successfully activated. He or she will receive sign in instructions by e-mail.'));
+                    Yii::$app->session->setFlash('success', Yii::t('app', 'Consumer successfully activated. He or she will receive sign-in instructions by email.'));
                     return $this->redirect(['index']);
+                } else {
+                    $transaction->rollBack();
+                    Yii::$app->session->setFlash('error', Yii::t('app', 'An unknown error occurred while activating the consumer.'));
                 }
-
+            } catch (\Exception $e) {
                 $transaction->rollBack();
-                Yii::$app->session->setFlash('error', Yii::t('app', 'An unknown error occorred while activating the consumer.'));
-                return $this->redirect(['index']);
+                Yii::$app->session->setFlash('error', Yii::t('app', 'Exception: ') . $e->getMessage());
             }
         }
-
+    
         return $this->render('active', [
             'model' => $consumer,
-            'consumer' => $consumer = $this->findModel($id),
         ]);
     }
+    
 
     public function actionViewDisable($id){
         $consumer = $this->findModel($id);

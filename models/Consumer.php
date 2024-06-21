@@ -551,10 +551,16 @@ class Consumer extends ActiveRecord
         ->one();
     }
 
-    private function calculateValuePaidBillet(){
-        $valorTotalRepasse = $this->plane->calculateProfitValue($this->sponsorConsumer->plane);
-        return $valorTotalRepasse/$this->maximum_amount;
+    private function calculateValuePaidBillet() {
+        if ($this->sponsorConsumer && $this->sponsorConsumer->plane) {
+            $valorTotalRepasse = $this->plane->calculateProfitValue($this->sponsorConsumer->plane);
+            return $valorTotalRepasse / $this->maximum_amount;
+        } else {
+            Yii::warning('Plane object is null for sponsor consumer.', 'application');
+            return 0; // ou outra ação apropriada, como lançar uma exceção ou retornar um valor padrão
+        }
     }
+    
 
     private function calculatePaidBillet(){
         return $this->calculateValuePaidBillet();

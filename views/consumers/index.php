@@ -98,7 +98,7 @@ $this->registerJsFile(Url::base() . '/js/consumersindex.js', ['depends' => [\yii
                         ]);
                     },
                     'exportasaas' => function($url, $model){
-                        return  Html::a('<img src="https://sistema.tbest.com.br/images/icon-asaas.png" width="15">', $url, [
+                        return  Html::a('<img src="https://sistema.jedax.com.br/images/icon-asaas.png" width="15">', $url, [
                         'title' => $model->id_asaas ? Yii::t('app', 'consumer is create in asaas') : Yii::t('app', 'export consumer for asaas'),
                             'class' => ((!$model->id_asaas || !$model->id_bling) ? 'exportasaas-consumer' : 'exportasaas disabled'),
                             'data-id' => $model->id,
